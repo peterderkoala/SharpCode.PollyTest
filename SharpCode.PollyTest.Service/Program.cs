@@ -16,8 +16,10 @@ var host = Host.CreateDefaultBuilder()
     })
     .ConfigureServices((context, service) =>
     {
+        // Adding Policy for constructor injection
         service.AddSingleton<ServicePolicy>();
         service.AddSingleton<ServiceCore>();
+
         service.AddHostedService<Worker>()
         .Configure<HostOptions>(options =>
         {

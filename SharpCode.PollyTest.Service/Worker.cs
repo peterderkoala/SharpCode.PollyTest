@@ -20,6 +20,7 @@ namespace SharpCode.PollyTest.Service
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            // Wrapping Core method in service policy ruleset
             await _servicePolicy.WaitOnErrorRetry.ExecuteAsync(
                 () => _serviceCore.DoStuff());
         }
