@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpCode.PollyTest.Service", "SharpCode.PollyTest.Service\SharpCode.PollyTest.Service.csproj", "{C9740768-27E4-4026-82B9-A9688808F874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpCode.PollyTest.Core", "SharpCode.PollyTest.Core\SharpCode.PollyTest.Core.csproj", "{572C29CA-BCB6-432D-BB53-F60E33189AAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9740768-27E4-4026-82B9-A9688808F874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9740768-27E4-4026-82B9-A9688808F874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9740768-27E4-4026-82B9-A9688808F874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9740768-27E4-4026-82B9-A9688808F874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{572C29CA-BCB6-432D-BB53-F60E33189AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{572C29CA-BCB6-432D-BB53-F60E33189AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{572C29CA-BCB6-432D-BB53-F60E33189AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{572C29CA-BCB6-432D-BB53-F60E33189AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AA5023C-9EDD-48D3-9D1E-510F59CC917F}
+	EndGlobalSection
+EndGlobal
