@@ -8,18 +8,41 @@ namespace SharpCode.PollyTest.Service.Policies
     {
         // Adding new retry prop
         public AsyncRetryPolicy WaitOnErrorRetry { get; }
+        public AsyncRetryPolicy WaitOnErrorIncrementalRetry { get; }
 
         private readonly ILogger<ServicePolicy> _logger;
 
         public ServicePolicy(ILogger<ServicePolicy> logger)
         {
+            _logger = logger;
 
             // Defining Handler
             WaitOnErrorRetry = Policy
                 .Handle<Exception>()
-                .WaitAndRetryAsync(5, attempt => TimeSpan.FromSeconds(5), (ex, t, i, c) => LogStuff(ex, t, i, c));
+                .WaitAndRetryAsync(
+                5,
+                attempt => TimeSpan.FromSeconds(5),
+                (exception, ts, count, context) =>
+                {
+                    _logger.LogError(exception, "Error Try {count} Wait {ts}", count, ts);
+                });
 
-            _logger = logger;
+
+            // In this case will wait for
+            //  2 ^ 1 = 2 seconds then
+            //  2 ^ 2 = 4 seconds then
+            //  2 ^ 3 = 8 seconds then
+            //  2 ^ 4 = 16 seconds then
+            //  2 ^ 5 = 32 seconds
+            WaitOnErrorIncrementalRetry = Policy
+                .Handle<Exception>()
+                .WaitAndRetryAsync(
+                5,
+                attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)),
+                (exception, ts, count, context) =>
+                {
+                    _logger.LogError(exception, "Error Try {count} Wait {ts}", count, ts);
+                });
         }
 
         /// <summary>
@@ -31,7 +54,7 @@ namespace SharpCode.PollyTest.Service.Policies
         /// <param name="c">PolicyContext</param>
         private void LogStuff(Exception ex, TimeSpan s, int i, Context c)
         {
-            _logger.LogError(ex, "Error Try {i} Wait {s}", i, s);
+
         }
     }
 }

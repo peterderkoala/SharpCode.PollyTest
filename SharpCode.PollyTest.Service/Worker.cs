@@ -23,6 +23,9 @@ namespace SharpCode.PollyTest.Service
             // Wrapping Core method in service policy ruleset
             await _servicePolicy.WaitOnErrorRetry.ExecuteAsync(
                 () => _serviceCore.DoStuff());
+
+            await _servicePolicy.WaitOnErrorIncrementalRetry.ExecuteAsync(
+                () => _serviceCore.DoStuff());
         }
     }
 }
